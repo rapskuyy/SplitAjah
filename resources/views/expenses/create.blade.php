@@ -40,7 +40,7 @@
 
                     <div class="mb-4">
                         <label class="form-label">{{ __('Who participated in this expense?') }}</label>
-                        <div class="border rounded p-3">
+                        <div class="border rounded p-3 dark-form-border">
                             @foreach($group->users as $user)
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="user_{{ $user->id }}"
@@ -69,4 +69,23 @@
         </div>
     </div>
 </div>
+
+<style>
+    .dark-form-border {
+        border-color: #475569 !important;
+    }
+    
+    html.dark .dark-form-border {
+        background-color: #334155 !important;
+    }
+    
+    .form-check-label {
+        color: #1e293b;
+    }
+    
+    html.dark .form-check-label {
+        color: #e2e8f0;
+    }
+</style>
+
 @endsection

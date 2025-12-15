@@ -55,7 +55,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="card-footer bg-light border-top py-3">
+                        <div class="card-footer border-top py-3">
                             <small class="text-muted">
                                 <i class="bi bi-calendar3 me-2"></i>Created {{ $group->created_at->diffForHumans() }}
                             </small>
@@ -71,6 +71,28 @@
     .card:hover {
         transform: translateY(-8px) !important;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    html.dark .card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    .btn-success {
+        background-color: #16a34a;
+        border-color: #16a34a;
+    }
+    
+    .btn-success:hover {
+        background-color: #15803d;
+        border-color: #15803d;
+    }
+    
+    .text-success {
+        color: #16a34a !important;
+    }
+    
+    html.dark .text-success {
+        color: #4ade80 !important;
     }
 </style>
 

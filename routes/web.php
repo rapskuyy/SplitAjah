@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LanguageController;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -25,15 +26,7 @@ Route::middleware('guest')->group(function () {
 require __DIR__.'/auth.php';
 
 // Language switch (works everywhere)
-Route::get('/lang/{locale}', function (string $locale) {
-    if (in_array($locale, ['en', 'id'])) {
-        session(['locale' => $locale]);
-        if (auth()->check()) {
-            auth()->user()->update(['language' => $locale]);
-        }
-    }
-    return back();
-})->name('lang.switch');
+Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 
 // Authenticated routes
 Route::middleware(['auth'])->group(function () {
@@ -62,13 +55,3 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/groups/{group}', [GroupController::class, 'destroy'])->name('groups.destroy');
 
 });
-
-Route::get('/lang/{locale}', function (string $locale) {
-    if (in_array($locale, ['en', 'id'])) {
-        session(['locale' => $locale]);
-        if (auth()->check()) {
-            auth()->user()->update(['language' => $locale]);
-        }
-    }
-    return back();
-})->name('lang.switch');

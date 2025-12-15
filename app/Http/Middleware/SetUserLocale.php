@@ -9,13 +9,29 @@ class SetUserLocale
 {
     public function handle(Request $request, Closure $next)
     {
-        // Get locale from session, or user preference, or default to 'en'
-        $locale = session('locale', auth()->check() ? auth()->user()->language : 'en');
+        // Priority: session -> cookie -> user's language field -> default 'en'
+        $locale = 'en';
         
-        if (in_array($locale, ['en', 'id'])) {
-            app()->setLocale($locale);
+        // Check session first (set by language switch)
+        if (session()->has('locale') && in_array(session('locale'), ['en', 'id'])) {
+            $locale = session('locale');
         }
-
+        // Check cookie (immediate availability)
+        elseif ($request->cookie('locale') && in_array($request->cookie('locale'), ['en', 'id'])) {
+            $locale = $request->cookie('locale');
+        }
+        // Check user's stored language preference if authenticated
+        elseif (auth()->check() && auth()->user()->language && in_array(auth()->user()->language, ['en', 'id'])) {
+            $locale = auth()->user()->language;
+        }
+        // Fall back to English
+        else {
+            $locale = 'en';
+        }
+        
+        // Set the application locale immediately
+        app()->setLocale($locale);
+        
         return $next($request);
     }
 }

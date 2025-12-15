@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <a href="{{ route('expenses.show', $expense) }}" class="card-title text-decoration-none">
+                                    <a href="{{ route('expenses.show', $expense) }}" class="card-title text-decoration-none expense-link">
                                         {{ $expense->description }}
                                     </a>
                                     <p class="card-text text-muted small mt-2">
@@ -105,5 +105,37 @@
         </form>
     </div>
 @endif
+
+<style>
+    .list-group-item {
+        background-color: white;
+        color: #1e293b;
+    }
+    
+    html.dark .list-group-item {
+        background-color: #334155;
+        color: #e2e8f0;
+        border-color: #475569;
+    }
+    
+    .expense-link {
+        color: #1e293b;
+        font-weight: 600;
+    }
+    
+    html.dark .expense-link {
+        color: #e2e8f0;
+    }
+    
+    .expense-link:hover {
+        color: #4f46e5;
+        text-decoration: underline !important;
+    }
+    
+    html.dark .expense-link:hover {
+        color: #a5b4fc;
+        text-decoration: underline !important;
+    }
+</style>
 
 @endsection

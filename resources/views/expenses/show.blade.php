@@ -47,7 +47,7 @@
 
             <!-- Participants & Balances -->
             <div class="card shadow-sm">
-                <div class="card-header bg-white dark-bg-gray-800">
+                <div class="card-header">
                     <h3 class="h5 mb-0">{{ __('Participants & Balance') }}</h3>
                 </div>
                 <div class="card-body">
@@ -133,4 +133,43 @@
         </div>
     </div>
 </div>
+
+<style>
+    .btn-link {
+        color: #4f46e5;
+    }
+    
+    html.dark .btn-link {
+        color: #a5b4fc;
+    }
+    
+    .btn-outline-danger {
+        color: #dc2626;
+        border-color: #dc2626;
+    }
+    
+    .btn-outline-danger:hover {
+        background-color: #dc2626;
+        color: white;
+    }
+    
+    html.dark .btn-outline-danger {
+        color: #f87171;
+        border-color: #f87171;
+    }
+    
+    html.dark .btn-outline-danger:hover {
+        background-color: #f87171;
+        color: white;
+    }
+    
+    .text-danger {
+        color: #dc2626 !important;
+    }
+    
+    html.dark .text-danger {
+        color: #f87171 !important;
+    }
+</style>
+
 @endsection
