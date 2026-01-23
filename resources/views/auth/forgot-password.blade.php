@@ -1,8 +1,8 @@
-@extends('layouts.guest-bootstrap')
+@extends('layouts.guest')
 
 @section('content')
 <div class="text-center mb-4">
-    <div class="logo">SplitOptions</div>
+    <div class="logo">SplitAjah</div>
     <p class="text-muted mt-2">{{ __('Forgot your password?') }}</p>
     <p class="small text-muted">{{ __('Enter your email to receive a password reset link') }}</p>
 </div>

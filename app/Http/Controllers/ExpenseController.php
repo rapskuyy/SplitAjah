@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    // Show form to create expense
+    
     public function create(Group $group)
     {
         if (!$group->users()->where('user_id', auth()->id())->exists()) {
@@ -19,7 +19,7 @@ class ExpenseController extends Controller
         return view('expenses.create', compact('group'));
     }
 
-    // Save new expense
+    
     public function store(Request $request, Group $group)
     {
         if (!$group->users()->where('user_id', auth()->id())->exists()) {
@@ -52,13 +52,7 @@ class ExpenseController extends Controller
         $participantIds = array_intersect($participantIds, $groupUserIds);
         $participantIds = array_values(array_unique($participantIds));
 
-        // if (!in_array(auth()->id(), $participantIds)) {
-        //     $participantIds[] = auth()->id();
-        // }
-
-        // if (empty($participantIds)) {
-        //     $participantIds = [auth()->id()];
-        // }
+     
 
         if (empty($participantIds)) {
         return back()->withErrors(['participant_ids' => 'Please select at least one participant.']);
@@ -87,7 +81,7 @@ class ExpenseController extends Controller
                          ->with('success', __('Expense added successfully!'));
     }
 
-    // Show expense details
+   
     public function show(Expense $expense)
     {
         if (!$expense->group->users()->where('user_id', auth()->id())->exists()) {
@@ -96,14 +90,14 @@ class ExpenseController extends Controller
         return view('expenses.show', compact('expense'));
     }
 
-    // Show list of user's expenses (optional)
+    
     public function index()
     {
         $expenses = auth()->user()->expenses;
         return view('expenses.index', compact('expenses'));
     }
 
-    // Show edit form
+    
     public function edit(Expense $expense)
     {
         if ($expense->created_by !== auth()->id()) {
@@ -112,7 +106,7 @@ class ExpenseController extends Controller
         return view('expenses.edit', compact('expense'));
     }
 
-    // Update expense
+    
     public function update(Request $request, Expense $expense)
     {
         if ($expense->created_by !== auth()->id()) {
@@ -154,10 +148,10 @@ class ExpenseController extends Controller
         $totalParticipants = count($participantIds);
         $sharePerPerson = round($request->total_amount / $totalParticipants, 2);
 
-        // Delete old participants
+       
         $expense->participants()->delete();
 
-        // Add updated participants
+        
         foreach ($participantIds as $index => $userId) {
             $paid = $userId === $expense->created_by ? $request->total_amount : 0;
             $share = $sharePerPerson;
@@ -178,7 +172,7 @@ class ExpenseController extends Controller
                          ->with('success', __('Expense updated successfully!'));
     }
 
-    // Delete expense
+    
     public function destroy(Expense $expense)
     {
         if ($expense->created_by !== auth()->id()) {

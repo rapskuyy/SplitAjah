@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-3xl mx-auto">
-    <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">{{ __('Edit Expense') }}</h1>
+    <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">{{ __('messages.edit_expense') }}</h1></h1>
 
     <form action="{{ route('expenses.update', $expense) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -18,30 +18,30 @@
         @endif
 
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('Description') }}</label>
+            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('messages.description') }}</label></label>
             <input type="text" name="description" required
                    class="w-full border rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                    value="{{ old('description', $expense->description) }}">
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('Total Amount') }}</label>
+            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('messages.total_amount') }}</label></label>
             <input type="number" step="0.01" name="total_amount" required
                    class="w-full border rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                    value="{{ old('total_amount', $expense->total_amount) }}">
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('Receipt (Optional)') }}</label>
+            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('messages.receipt_optional') }}</label>
             <input type="file" name="receipt" accept="image/*">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('Max 2MB. JPG, PNG') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('messages.max_size_format') }}</p>
             @if($expense->receipt_path)
-                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ __('Current receipt:') }} <a href="{{ asset('storage/' . $expense->receipt_path) }}" target="_blank" class="text-indigo-600 hover:underline">{{ __('View') }}</a></p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ __('messages.current_receipt') }} <a href="{{ asset('storage/' . $expense->receipt_path) }}" target="_blank" class="text-indigo-600 hover:underline">{{ __('messages.view') }}</a></p>
             @endif
         </div>
 
         <div class="mb-6">
-            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('Who participated in this expense?') }}</label>
+            <label class="block text-gray-700 dark:text-gray-300 mb-2">{{ __('messages.who_participated_in_this_expense') }}</label></label>
             <div class="space-y-2 bg-gray-50 dark:bg-gray-800 p-4 rounded">
                 @php $currentParticipants = $expense->participants->pluck('user_id')->toArray(); @endphp
                 @foreach($expense->group->users as $user)
@@ -63,10 +63,10 @@
 
         <div class="flex space-x-3">
             <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-                {{ __('Update Expense') }}
+                {{ __('messages.update_expense') }}
             </button>
             <a href="{{ route('expenses.show', $expense) }}" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded">
-                {{ __('Cancel') }}
+                {{ __('messages.cancel') }}
             </a>
         </div>
     </form>

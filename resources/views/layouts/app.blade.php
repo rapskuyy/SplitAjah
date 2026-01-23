@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SplitAjah</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Google Font: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -20,7 +17,6 @@
             --splitajah: #4f46e5;
         }
         
-        /* Base Styles */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8fafc;
@@ -35,7 +31,6 @@
             color: #e2e8f0;
         }
         
-        /* Navbar Styles */
         .navbar {
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             background: linear-gradient(135deg, var(--splitajah), #4338ca);
@@ -50,7 +45,6 @@
             color: white !important;
         }
         
-        /* Card Styles */
         .card {
             border-radius: 16px;
             box-shadow: 0 6px 16px rgba(0,0,0,0.08);
@@ -94,7 +88,6 @@
             border-color: #475569;
         }
         
-        /* Footer Styles */
         .footer {
             padding: 1.5rem 0;
             background-color: #f1f5f9;
@@ -106,7 +99,6 @@
             color: #94a3b8;
         }
         
-        /* Language Badge Styles */
         .language-badge {
             font-size: 0.75rem;
             padding: 0.25rem 0.5rem;
@@ -126,7 +118,6 @@
             color: #a5b4fc;
         }
         
-        /* Alert Styles */
         .alert {
             border: none;
             border-radius: 8px;
@@ -180,7 +171,6 @@
             border: 1px solid #f87171;
         }
         
-        /* Button Styles */
         .btn-primary {
             background-color: var(--splitajah);
             border-color: var(--splitajah);
@@ -213,7 +203,6 @@
             color: #0f172a;
         }
         
-        /* Form Input Styles */
         .form-control, .form-select {
             background-color: white;
             color: #1e293b;
@@ -244,7 +233,6 @@
             box-shadow: 0 0 0 0.2rem rgba(165, 180, 252, 0.25);
         }
         
-        /* Label Styles */
         .form-label {
             color: #1e293b;
             font-weight: 500;
@@ -254,7 +242,6 @@
             color: #e2e8f0;
         }
         
-        /* Text Muted Styles */
         .text-muted {
             color: #64748b !important;
         }
@@ -263,7 +250,6 @@
             color: #94a3b8 !important;
         }
         
-        /* Dropdown Styles */
         .dropdown-menu {
             background-color: white;
             border: 1px solid #e2e8f0;
@@ -302,13 +288,11 @@
             border-color: #475569;
         }
         
-        /* Badge Styles */
         .badge {
             border-radius: 8px;
             font-weight: 500;
         }
         
-        /* HR Styles */
         hr {
             border-color: #e2e8f0;
             opacity: 1;
@@ -318,12 +302,10 @@
             border-color: #475569;
         }
         
-        /* Smooth transitions */
         * {
             transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
         }
         
-        /* List Group Styles */
         .list-group-item {
             background-color: white;
             color: #1e293b;
@@ -341,7 +323,6 @@
             border-color: var(--splitajah);
         }
         
-        /* Input Group Styles */
         .input-group-text {
             background-color: #f1f5f9;
             color: #1e293b;
@@ -354,7 +335,6 @@
             border: 1px solid #475569;
         }
         
-        /* Tooltip Styles */
         .tooltip-inner {
             background-color: #1e293b;
             color: white;
@@ -364,7 +344,6 @@
             background-color: #64748b;
         }
         
-        /* Modal Styles */
         .modal-content {
             background-color: white;
             color: #1e293b;
@@ -397,7 +376,6 @@
             border-color: #475569;
         }
         
-        /* Pagination Styles */
         .pagination {
             background-color: white;
         }
@@ -433,7 +411,6 @@
             border-color: var(--splitajah);
         }
         
-        /* Placeholder Styles */
         .form-control::placeholder {
             color: #94a3b8;
         }
@@ -442,7 +419,6 @@
             color: #64748b;
         }
         
-        /* Text Selection Styles */
         ::selection {
             background-color: var(--splitajah);
             color: white;
@@ -453,7 +429,6 @@
             color: #1e293b;
         }
         
-        /* Invalid Feedback Styles */
         .invalid-feedback {
             color: #dc2626;
         }
@@ -470,7 +445,6 @@
             border-color: #f87171 !important;
         }
         
-        /* Breadcrumb Styles */
         .breadcrumb {
             background-color: #f1f5f9;
         }
@@ -487,7 +461,6 @@
             color: #a5b4fc;
         }
         
-        /* Progress Bar Styles */
         .progress {
             background-color: #e2e8f0;
         }
@@ -500,7 +473,6 @@
             background-color: var(--splitajah);
         }
         
-        /* Accordion Styles */
         .accordion-button {
             background-color: white;
             color: #1e293b;
@@ -531,7 +503,6 @@
 </head>
 <body>
     @auth
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard') }}">
@@ -543,7 +514,6 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
-                    <!-- Language Switcher -->
                     <li class="nav-item d-flex align-items-center me-3">
                         <a href="{{ route('lang.switch', 'en') }}" 
                            class="language-badge text-decoration-none {{ app()->getLocale() == 'en' ? 'active' : '' }}">
@@ -556,14 +526,12 @@
                         </a>
                     </li>
 
-                    <!-- Dark Mode Toggle -->
                     <li class="nav-item me-3">
                         <button id="darkModeToggle" class="btn btn-outline-light btn-sm">
                             <i class="bi bi-moon-stars"></i>
                         </button>
                     </li>
 
-                    <!-- User Dropdown -->
                     <li class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle text-white" href="#" role="button" 
                            id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" 
@@ -580,7 +548,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
-                                        <i class="bi bi-box-arrow-right me-2"></i>{{ __('Log Out') }}
+                                        <i class="bi bi-box-arrow-right me-2"></i>{{ __('messages.logout') }}
                                     </button>
                                 </form>
                             </li>
@@ -592,26 +560,21 @@
     </nav>
     @endauth
 
-    <!-- Main Content -->
     <main class="flex-grow py-4 py-md-5">
         <div class="container">
             @yield('content')
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer mt-auto">
         <div class="container text-center">
-            &copy; {{ date('Y') }} SplitAjah. {{ __('All rights reserved.') }}
+            &copy; {{ date('Y') }} SplitAjah. {{ __('messages.all_rights_reserved') }}
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Dark Mode Logic -->
     <script>
-        // Initialize dark mode
         const isDarkMode = localStorage.getItem('dark_mode') === 'true' || 
                           (!localStorage.getItem('dark_mode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
         if (isDarkMode) {
@@ -619,7 +582,6 @@
         }
         localStorage.setItem('dark_mode', isDarkMode);
 
-        // Toggle dark mode
         document.getElementById('darkModeToggle').addEventListener('click', () => {
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.setItem('dark_mode', isDark);
@@ -627,7 +589,6 @@
                 isDark ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars"></i>';
         });
 
-        // Set initial icon
         document.getElementById('darkModeToggle').innerHTML = 
             isDarkMode ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars"></i>';
     </script>

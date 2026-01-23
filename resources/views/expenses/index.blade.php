@@ -3,12 +3,12 @@
 @section('content')
 <div class="space-y-6">
     <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold">{{ __('All Expenses') }}</h1>
+        <h1 class="text-2xl font-bold">{{ __('messages.all_expenses') }}</h1></h1>
     </div>
 
     @if($expenses->isEmpty())
         <div class="text-center py-10 text-gray-500 dark:text-gray-400">
-            {{ __('No expenses yet.') }}
+            {{ __('messages.no_expenses_yet') }}
         </div>
     @else
         <div class="space-y-4">

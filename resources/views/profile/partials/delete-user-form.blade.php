@@ -9,11 +9,11 @@
         </p>
     </header>
 
-    <x-danger-button type="button" data-bs-toggle="modal" data-bs-target="#modal-confirm-user-deletion">{{ __('Delete Account') }}</x-danger-button>
+    <x-danger-button type="button" data-bs-toggle="modal" data-bs-target="#modal-confirm-user-deletion">{{ __('messages.delete_account') }}</x-danger-button></x-danger-button></x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <div class="modal-header">
-            <h5 class="modal-title">{{ __('Delete Account') }}</h5>
+            <h5 class="modal-title">{{ __('delete_account') }}</h5></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

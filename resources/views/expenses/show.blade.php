@@ -11,7 +11,7 @@
                         <div>
                             <a href="{{ route('expenses.edit', $expense) }}" 
                                class="btn btn-sm btn-outline-primary me-2">
-                                {{ __('Edit') }}
+                                {{ __('messages.edit') }}
                             </a>
 
                             <form action="{{ route('expenses.destroy', $expense) }}" method="POST" class="d-inline">
@@ -19,8 +19,8 @@
                                 @method('DELETE')
                                 <button type="submit" 
                                         class="btn btn-sm btn-outline-danger"
-                                        onclick="return confirm('{{ __('Are you sure you want to delete this expense?') }}')">
-                                    {{ __('Delete') }}
+                                        onclick="return confirm('{{ __('messages.are_you_sure_you_want_to_delete_this_expense') }}')">
+                                    {{ __('messages.delete') }}
                                 </button>
                             </form>
                         </div>
@@ -35,7 +35,7 @@
 
                     @if($expense->receipt_path)
                         <div class="mt-3">
-                            <p class="fw-bold mb-2">{{ __('Receipt') }}:</p>
+                            <p class="fw-bold mb-2">{{ __('receipt') }}:</p>
                             <img src="{{ asset('storage/' . $expense->receipt_path) }}" 
                                  alt="Receipt" 
                                  class="img-fluid rounded border"
@@ -45,10 +45,9 @@
                 </div>
             </div>
 
-            <!-- Participants & Balances -->
             <div class="card shadow-sm">
                 <div class="card-header">
-                    <h3 class="h5 mb-0">{{ __('Participants & Balance') }}</h3>
+                    <h3 class="h5 mb-0">{{ __('messages.participants_and_balance') }}</h3></h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -73,8 +72,8 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>{{ $p->user->name }}</span>
                                 <span class="text-muted small">
-                                    {{ __('Paid') }}: Rp{{ number_format($p->paid_amount, 0, ',', '.') }} |
-                                    {{ __('Share') }}: Rp{{ number_format($p->share_amount, 0, ',', '.') }} |
+                                    {{ __('messages.paid') }}: Rp{{ number_format($p->paid_amount, 0, ',', '.') }} |
+                                    {{ __('messages.share') }}: Rp{{ number_format($p->share_amount, 0, ',', '.') }} |
                                     <span class="{{ $balance >= 0 ? 'text-success' : 'text-danger' }}">
                                         {{ $balance >= 0 ? '+' : '' }}Rp{{ number_format(abs($balance), 0, ',', '.') }}
                                     </span>
@@ -91,8 +90,8 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>{{ $payer->name }}</span>
                                 <span class="text-muted small">
-                                    {{ __('Paid') }}: Rp{{ number_format($expense->total_amount, 0, ',', '.') }} |
-                                    {{ __('Share') }}: Rp0 |
+                                    {{ __('messages.paid') }}: Rp{{ number_format($expense->total_amount, 0, ',', '.') }} |
+                                    {{ __('messages.share') }}: Rp0 |
                                     <span class="text-success">
                                         +Rp{{ number_format($balance, 0, ',', '.') }}
                                     </span>
@@ -101,10 +100,9 @@
                         @endif
                     </ul>
 
-                    <!-- Settlement Suggestion -->
                     @if(!empty($debtors) && !empty($creditors))
                         <div class="mt-4 pt-3 border-top">
-                            <h4 class="h6">{{ __('Payment Suggestion') }}</h4>
+                            <h4 class="h6">{{ __('messages.payment_suggestion') }}</h4></h4>
                             <ul class="list-unstyled mt-2 mb-0">
                                 @php
                                     foreach ($debtors as &$debtor) {
@@ -127,7 +125,7 @@
             <div class="text-center mt-4">
                 <a href="{{ route('groups.show', $expense->group) }}" 
                    class="btn btn-link text-decoration-none">
-                    &larr; {{ __('Back to Group') }}
+                    &larr; {{ __('messages.back_to_group') }}
                 </a>
             </div>
         </div>

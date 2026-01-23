@@ -11,9 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Register after session middleware to ensure session is available
         $middleware->web([\App\Http\Middleware\SetUserLocale::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        
     })->create();

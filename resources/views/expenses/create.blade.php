@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 mx-auto">
-        <h1 class="h2 mb-4">{{ __('Add New Expense') }}</h1>
+        <h1 class="h2 mb-4">{{ __('messages.add_new_expense') }}</h1></h1>
 
         <div class="card">
             <div class="card-body">
@@ -11,7 +11,7 @@
                     @csrf
                     @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
-                        <h5 class="alert-heading">{{ __('Errors:') }}</h5>
+                        <h5 class="alert-heading">{{ __('messages.errors') }}</h5></h5>
                         <ul class="mb-0">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -21,13 +21,13 @@
                     @endif
 
                     <div class="mb-3">
-                        <label for="description" class="form-label">{{ __('Description') }}</label>
+                        <label for="description" class="form-label">{{ __('messages.description') }}</label></label>
                         <input type="text" id="description" name="description" required class="form-control"
                                value="{{ old('description') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="total_amount" class="form-label">{{ __('Total Amount') }}</label>
+                        <label for="total_amount" class="form-label">{{ __('messages.total_amount') }}</label></label>
                         <input type="number" id="total_amount" step="0.01" name="total_amount" required class="form-control"
                                value="{{ old('total_amount') }}">
                     </div>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label">{{ __('Who participated in this expense?') }}</label>
+                        <label class="form-label">{{ __('messages.who_participated_in_this_expense') }}</label></label>
                         <div class="border rounded p-3 dark-form-border">
                             @foreach($group->users as $user)
                                 <div class="form-check">
@@ -61,8 +61,8 @@
                     </div>
 
                     <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-primary">{{ __('Add Expense') }}</button>
-                        <a href="{{ route('groups.show', $group) }}" class="btn btn-outline-secondary">{{ __('Cancel') }}</a>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.add_expense') }}</button>
+                        <a href="{{ route('groups.show', $group) }}" class="btn btn-outline-secondary">{{ __('messages.cancel') }}</a></a>
                     </div>
                 </form>
             </div>

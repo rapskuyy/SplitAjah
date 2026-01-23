@@ -3,28 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class LanguageController extends Controller
 {
     public function switch($locale)
     {
-        // Validate locale
         if (!in_array($locale, ['en', 'id'])) {
             $locale = 'en';
         }
 
-        // Store in session (will be available after middleware runs next time)
         session(['locale' => $locale]);
 
-        // Store in cookie (immediate availability)
-        cookie()->queue('locale', $locale, 60*24*365); // 1 year
+        $response = redirect()->back();
+        
+        $response->cookie(Cookie::make('locale', $locale, 60 * 24 * 365, path: '/', sameSite: 'lax'));
 
-        // Store in user profile if authenticated
         if (auth()->check()) {
             auth()->user()->update(['language' => $locale]);
         }
 
-        // Redirect back to previous page
-        return redirect()->back();
+        return $response;
     }
 }

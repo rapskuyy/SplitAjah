@@ -14,77 +14,72 @@ class SplitAjahSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create users
         $users = User::factory()->count(5)->create([
             'password' => Hash::make('password'),
         ]);
 
-        // Assign names for clarity
         $userNames = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
         foreach ($users as $index => $user) {
             $user->update(['name' => $userNames[$index]]);
         }
 
-        // Create groups
         $group1 = Group::create([
             'name' => 'Weekend Trip',
-            'created_by' => $users[0]->id, // Alice
+            'created_by' => $users[0]->id, 
         ]);
 
         $group2 = Group::create([
             'name' => 'Office Lunch',
-            'created_by' => $users[1]->id, // Bob
+            'created_by' => $users[1]->id,
         ]);
 
         $group3 = Group::create([
             'name' => 'Family Dinner',
-            'created_by' => $users[3]->id, // Diana
+            'created_by' => $users[3]->id, 
         ]);
 
-        // Add members to groups
-        // Group 1: Alice, Bob, Charlie
+
         $group1->users()->attach([$users[0]->id, $users[1]->id, $users[2]->id]);
 
-        // Group 2: Bob, Charlie, Diana, Eve
         $group2->users()->attach([$users[1]->id, $users[2]->id, $users[3]->id, $users[4]->id]);
 
-        // Group 3: Diana, Eve, Alice
+
         $group3->users()->attach([$users[3]->id, $users[4]->id, $users[0]->id]);
 
-        // Create expenses
+    
         $this->createExpense(
             group: $group1,
-            creator: $users[0], // Alice
+            creator: $users[0], 
             description: 'Hotel Booking',
             totalAmount: 900000,
-            participantIds: [$users[0]->id, $users[1]->id, $users[2]->id], // All 3
+            participantIds: [$users[0]->id, $users[1]->id, $users[2]->id], 
             receiptPath: null
         );
 
         $this->createExpense(
             group: $group1,
-            creator: $users[1], // Bob
+            creator: $users[1],
             description: 'Gas for Car',
             totalAmount: 150000,
-            participantIds: [$users[0]->id, $users[1]->id], // Only Alice & Bob
+            participantIds: [$users[0]->id, $users[1]->id], 
             receiptPath: null
         );
 
         $this->createExpense(
             group: $group2,
-            creator: $users[1], // Bob
+            creator: $users[1], 
             description: 'Group Lunch',
             totalAmount: 400000,
-            participantIds: [$users[1]->id, $users[2]->id, $users[3]->id, $users[4]->id], // All 4
+            participantIds: [$users[1]->id, $users[2]->id, $users[3]->id, $users[4]->id], 
             receiptPath: null
         );
 
         $this->createExpense(
             group: $group3,
-            creator: $users[3], // Diana
+            creator: $users[3], 
             description: 'Restaurant Bill',
             totalAmount: 600000,
-            participantIds: [$users[3]->id, $users[4]->id], // Only Diana & Eve (Alice didn't go)
+            participantIds: [$users[3]->id, $users[4]->id], 
             receiptPath: null
         );
 
@@ -108,7 +103,6 @@ class SplitAjahSeeder extends Seeder
             $paid = $userId === $creator->id ? $totalAmount : 0;
             $share = $sharePerPerson;
 
-            // Fix rounding for last participant
             if ($index === $totalParticipants - 1) {
                 $share = $totalAmount - ($sharePerPerson * ($totalParticipants - 1));
             }

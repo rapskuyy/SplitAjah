@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+            {{ __('messages.profile_information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -18,13 +18,13 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('messages.name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('messages.email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -48,11 +48,11 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ __('Saved.') }}
+                    {{ __('saved') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif

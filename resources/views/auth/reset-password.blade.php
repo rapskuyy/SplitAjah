@@ -3,7 +3,7 @@
 @section('content')
 <div class="text-center mb-4">
     <div class="logo">SplitAjah</div>
-    <p class="text-muted mt-2">{{ __('Reset your password') }}</p>
+    <p class="text-muted mt-2">{{ __('messages.reset_your_password') }}</p></p>
 </div>
 
 <form method="POST" action="{{ route('password.store') }}">

@@ -27,7 +27,6 @@ public function participants()
 
 public function payer()
 {
-    // Simplified: assume the creator is the payer for now
     return $this->creator();
 }
     protected $fillable = ['group_id', 'description', 'total_amount', 'receipt_path', 'created_by'];

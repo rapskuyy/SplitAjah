@@ -12,20 +12,20 @@
 <div class="mb-5">
     <div class="row mb-5 align-items-center">
         <div class="col-md-6">
-            <h1 class="h1 fw-bold">{{ __('My Groups') }}</h1>
-            <p class="text-muted">{{ __('Manage and view all your expense groups') }}</p>
+            <h1 class="h1 fw-bold">{{ __('messages.my_groups') }}</h1>
+            <p class="text-muted">{{ __('messages.manage_and_view_all_your_expense_groups') }}</p>
         </div>
         <div class="col-md-6 text-end">
             <a href="{{ route('groups.create') }}" class="btn btn-lg btn-primary">
-                <i class="bi bi-plus-circle me-2"></i>{{ __('Create Group') }}
+                <i class="bi bi-plus-circle me-2"></i>{{ __('messages.create_group') }}
             </a>
         </div>
     </div>
 
     @if(auth()->user()->groups->isEmpty())
         <div class="alert alert-info text-center py-5 mt-5">
-            <h5>{{ __('No groups yet') }}</h5>
-            <p class="mb-0">{{ __('Create your first group to start splitting expenses') }}</p>
+            <h5>{{ __('messages.no_groups_yet') }}</h5>
+            <p class="mb-0">{{ __('messages.create_your_first_group_to_start_splitting_expenses') }}</p>
         </div>
     @else
         <div class="row g-4">
@@ -51,13 +51,13 @@
 
                             <div class="d-flex flex-column gap-2">
                                 <a href="{{ route('groups.show', $group) }}" class="btn btn-outline-primary btn-lg w-100">
-                                    <i class="bi bi-eye me-2"></i>{{ __('View Expenses') }}
+                                    <i class="bi bi-eye me-2"></i>{{ __('messages.view_expenses') }}
                                 </a>
                             </div>
                         </div>
                         <div class="card-footer border-top py-3">
                             <small class="text-muted">
-                                <i class="bi bi-calendar3 me-2"></i>Created {{ $group->created_at->diffForHumans() }}
+                                <i class="bi bi-calendar3 me-2"></i>{{ __('messages.created') }} {{ $group->created_at->diffForHumans() }}
                             </small>
                         </div>
                     </div>

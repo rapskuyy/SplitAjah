@@ -8,14 +8,14 @@
         </div>
         <div class="col-md-6 text-end">
             <a href="{{ route('expenses.create', $group) }}" class="btn btn-success">
-                <i class="bi bi-plus-circle me-2"></i>{{ __('Add Expense') }}
+                <i class="bi bi-plus-circle me-2"></i>{{ __('messages.add_expense') }}
             </a>
         </div>
     </div>
 
     @if($group->expenses->isEmpty())
         <div class="alert alert-info text-center py-5">
-            {{ __('No expenses yet.') }}
+            {{ __('messages.no_expenses_yet') }}
         </div>
     @else
         <div class="row">
@@ -44,25 +44,24 @@
 
     <div class="mt-4">
         <a href="{{ route('dashboard') }}" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left me-2"></i>{{ __('Back to Dashboard') }}
+            <i class="bi bi-arrow-left me-2"></i>{{ __('messages.back_to_dashboard') }}
         </a>
     </div>
 </div>
 
-<!-- Add Member by Email -->
 <div class="card mt-5">
     <div class="card-body">
-        <h5 class="card-title mb-4">{{ __('Add Member') }}</h5>
+        <h5 class="card-title mb-4">{{ __('messages.add_member') }}</h5>
         <form method="POST" action="{{ route('groups.add-member', $group) }}">
             @csrf
             <div class="input-group mb-3">
                 <input type="email" 
                        name="email" 
                        required
-                       placeholder="{{ __('Enter member email') }}"
+                       placeholder="{{ __('messages.enter_member_email') }}"
                        class="form-control"
                        value="{{ old('email') }}">
-                <button class="btn btn-primary" type="submit">{{ __('Add') }}</button>
+                <button class="btn btn-primary" type="submit">{{ __('messages.add') }}</button></button>
             </div>
             @error('email')
                 <div class="alert alert-danger" role="alert">{{ $message }}</div>
@@ -79,7 +78,7 @@
 
 <div class="card mt-4">
     <div class="card-body">
-        <h5 class="card-title mb-4">{{ __('Members') }}</h5>
+        <h5 class="card-title mb-4">{{ __('messages.members_list') }}</h5></h5>
         <div class="list-group list-group-flush">
             @foreach($group->users as $member)
                 <div class="list-group-item d-flex justify-content-between align-items-center">
@@ -93,14 +92,13 @@
     </div>
 </div>
 
-<!-- Delete Group Button (only for creator) -->
 @if(auth()->id() === $group->created_by)
     <div class="mt-4">
         <form action="{{ route('groups.destroy', $group) }}" method="POST" id="deleteGroupForm">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __('Are you sure you want to delete this group? All expenses will be permanently deleted.') }}')">
-                <i class="bi bi-trash me-2"></i>{{ __('Delete Group') }}
+            <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __('messages.are_you_sure_you_want_to_delete_this_group') }}')">
+                <i class="bi bi-trash me-2"></i>{{ __('messages.delete_group') }}
             </button>
         </form>
     </div>

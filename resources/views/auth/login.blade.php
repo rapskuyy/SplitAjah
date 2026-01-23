@@ -3,19 +3,19 @@
 @section('content')
 <div class="text-center mb-4">
     <div class="logo">SplitAjah</div>
-    <p class="text-muted mt-2">{{ __('Sign in to your account') }}</p>
+    <p class="text-muted mt-2">{{ __('messages.sign_in_to_your_account') }}</p></p>
 </div>
 
 <form method="POST" action="{{ route('login') }}">
     @csrf
 
     <div class="mb-3">
-        <label for="email" class="form-label">{{ __('Email') }}</label>
+        <label for="email" class="form-label">{{ __('messages.email') }}</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
                    class="form-control @error('email', 'default') is-invalid @enderror"
-                   placeholder="{{ __('Enter your email') }}">
+                   placeholder="{{ __('messages.enter_your_email') }}">">
         </div>
         @error('email')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -23,12 +23,12 @@
     </div>
 
     <div class="mb-4">
-        <label for="password" class="form-label">{{ __('Password') }}</label>
+        <label for="password" class="form-label">{{ __('messages.password') }}</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-lock"></i></span>
             <input id="password" type="password" name="password" required
                    class="form-control @error('password', 'default') is-invalid @enderror"
-                   placeholder="{{ __('Enter your password') }}">
+                   placeholder="{{ __('messages.enter_your_password') }}">">
         </div>
         @error('password')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -37,12 +37,12 @@
 
     <div class="mb-3 form-check">
         <input id="remember_me" type="checkbox" name="remember" class="form-check-input">
-        <label for="remember_me" class="form-check-label">{{ __('Remember me') }}</label>
+        <label for="remember_me" class="form-check-label">{{ __('messages.remember_me') }}</label></label>
     </div>
 
     <div class="d-grid gap-2 mb-3">
         <button type="submit" class="btn btn-splitajah btn-lg">
-            <i class="bi bi-box-arrow-in-right me-2"></i>{{ __('Log in') }}
+            <i class="bi bi-box-arrow-in-right me-2"></i>{{ __('messages.login') }}
         </button>
     </div>
 

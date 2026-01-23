@@ -26,7 +26,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'language' => 'en', // default
+            'language' => 'en',
         ]);
 
         Auth::login($user);
