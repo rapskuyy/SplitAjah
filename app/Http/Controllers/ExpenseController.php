@@ -48,11 +48,15 @@ class ExpenseController extends Controller
         ]);
 
         $participantIds = $request->participant_ids ?? [];
+        $participantIds = array_map('intval', $participantIds);
         $groupUserIds = $group->users->pluck('id')->toArray();
         $participantIds = array_intersect($participantIds, $groupUserIds);
         $participantIds = array_values(array_unique($participantIds));
 
-     
+        $authId = (int) auth()->id();
+        if (!in_array($authId, $participantIds, true)) {
+            $participantIds[] = $authId;
+        }
 
         if (empty($participantIds)) {
         return back()->withErrors(['participant_ids' => 'Please select at least one participant.']);
@@ -62,7 +66,7 @@ class ExpenseController extends Controller
         $sharePerPerson = round($request->total_amount / $totalParticipants, 2);
 
         foreach ($participantIds as $index => $userId) {
-            $paid = $userId === auth()->id() ? $request->total_amount : 0;
+            $paid = ((int)$userId === $authId) ? $request->total_amount : 0;
             $share = $sharePerPerson;
 
             if ($index === $totalParticipants - 1) {
@@ -133,12 +137,14 @@ class ExpenseController extends Controller
         ]);
 
         $participantIds = $request->participant_ids ?? [];
+        $participantIds = array_map('intval', $participantIds);
         $groupUserIds = $expense->group->users->pluck('id')->toArray();
         $participantIds = array_intersect($participantIds, $groupUserIds);
         $participantIds = array_unique($participantIds);
 
-        if (!in_array($expense->created_by, $participantIds)) {
-            $participantIds[] = $expense->created_by;
+        $createdById = (int) $expense->created_by;
+        if (!in_array($createdById, $participantIds, true)) {
+            $participantIds[] = $createdById;
         }
 
         if (empty($participantIds)) {
@@ -153,7 +159,7 @@ class ExpenseController extends Controller
 
         
         foreach ($participantIds as $index => $userId) {
-            $paid = $userId === $expense->created_by ? $request->total_amount : 0;
+            $paid = ((int)$userId === $createdById) ? $request->total_amount : 0;
             $share = $sharePerPerson;
 
             if ($index === $totalParticipants - 1) {
