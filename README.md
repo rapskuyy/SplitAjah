@@ -6,12 +6,12 @@ SplitAjah adalah aplikasi web berbasis Laravel 11 dengan MySQL sebagai database 
 
 Berikut adalah fitur utama yang tersedia di aplikasi SplitAjah:
 
-✔️ Autentikasi Pengguna
-✔️ Manajemen Grup – buat, lihat, edit, hapus grup
-✔️ Transaksi atau pembagian item di dalam grup
-✔️ Detail Riwayat aktivitas pengguna
-✔️ Dashboard user friendly
-✔️ Dukungan multi-bahasa / localization (opsional bergantung konfigurasi)
+- Autentikasi Pengguna
+- Manajemen Grup – buat, lihat, edit, hapus grup
+- Transaksi atau pembagian item di dalam grup
+- Detail Riwayat aktivitas pengguna
+- Dashboard user friendly
+- Dukungan multi-bahasa / localization (opsional bergantung konfigurasi)
 
 **Cara Instalasi (Development)**
 
