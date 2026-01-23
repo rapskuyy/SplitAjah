@@ -18,21 +18,21 @@ Berikut adalah fitur utama yang tersedia di aplikasi SplitAjah:
 Ikuti langkah-langkah berikut untuk menjalankan aplikasi di lokal:
 
 1. Clone Repository
-git clone https://github.com/rapskuyy/SplitAjah.git
-cd SplitAjah
+- git clone https://github.com/rapskuyy/SplitAjah.git
+- cd SplitAjah
 
 2. Install Dependencies
-- Install Composer
-composer install
+Install Composer
+- composer install
 
-- Install npm
-npm install
+Install npm
+- npm install
 
 3. Set Up Environment
-- Duplikasi file .env.example menjadi .env:
-cp .env.example .env
+Duplikasi file .env.example menjadi .env:
+- cp .env.example .env
 
-- Buka .env lalu atur konfigurasi database:
+Buka .env lalu atur konfigurasi database:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -41,11 +41,11 @@ DB_USERNAME=user_mysql
 DB_PASSWORD=password_mysql
 
 4. Generate Application Key
-php artisan key:generate
+- php artisan key:generate
 
 5. Migrate Database
-php artisan migrate
-php artisan db:seed
+- php artisan migrate
+- php artisan db:seed
 
 6. Jalankan Aplikasi
-php artisan serve
+- php artisan serve
