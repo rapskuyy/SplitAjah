@@ -22,23 +22,23 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi di lokal:
 - cd SplitAjah
 
 2. Install Dependencies
-Install Composer
-- composer install
+- Install Composer
+    - composer install
 
-Install npm
-- npm install
+- Install npm
+    - npm install
 
 3. Set Up Environment
-Duplikasi file .env.example menjadi .env:
-- cp .env.example .env
+- Duplikasi file .env.example menjadi .env:
+    - cp .env.example .env
 
-Buka .env lalu atur konfigurasi database:
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nama_database
-DB_USERNAME=user_mysql
-DB_PASSWORD=password_mysql
+- Buka .env lalu atur konfigurasi database:
+    - DB_CONNECTION=mysql
+    - DB_HOST=127.0.0.1
+    - DB_PORT=3306
+    - DB_DATABASE=nama_database
+    - DB_USERNAME=user_mysql
+    - DB_PASSWORD=password_mysql
 
 4. Generate Application Key
 - php artisan key:generate
